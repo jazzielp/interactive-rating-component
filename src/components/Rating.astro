@@ -1,0 +1,62 @@
+---
+import Start from '../Icons/Start.astro'
+import Article from '../components/Article.astro'
+const rating = [1,2,3,4,5]
+---
+<Article>
+    <header class="pb-[16px]">
+        <div class="w-[40px] h-[40px] lg:w-12 lg:h-12 rounded-full bg-custom-dark-blue grid place-content-center">
+            <Start />
+        </div>
+    </header>
+    <div>
+        <h2 class="text-custom-white text-2xl lg:text-[28px] font-bold">How did we do?</h2>
+        <p class="text-custom-light-grey text-sm lg:text-[15px] leading-[24px] mt-[15px] mb-6">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+    </div>
+    <div class="mb-6 lg:mb-8 flex justify-between">
+        {
+            rating.map((num) => {
+                
+                return <span id={num.toString()} class="section text-custom-medium-grey bg-custom-dark-blue w-[42px] h-[42px] lg:w-[51px] lg:h-[51px] rounded-full grid place-content-center hover:bg-custom-orange hover:text-custom-white hover:cursor-pointer transition-all">{num}</span>
+            })
+        }
+    </div>
+    <div class="">
+        <button id="btnSubmit" class="w-[279px] lg:w-[341px] py-3 lg:py-4 text-center leading-[15px] bg-custom-orange rounded-3xl inline-block text-custom-white text-sm lg:text-[15px] font-bold hover:bg-custom-white hover:text-custom-orange transition-all">SUBMIT</button>
+    </div>
+</Article>
+
+<style>
+    .selected {
+        background-color: #979797;
+        color: white;
+    }
+</style>
+
+<script>
+    let numRating = '0'
+    const ratings = document.querySelectorAll('.section')
+    const btnSubmit = document.querySelector('#btnSubmit')
+    ratings.forEach((rating) => {
+        rating.addEventListener('click', () => {
+            selectedRating(rating.innerHTML)
+        })
+    })
+    btnSubmit?.addEventListener('click', () => {
+        handleClick()
+    })
+    function selectedRating(num: string) {
+        numRating = num
+        ratings.forEach((rating) => {
+            rating.classList.remove('selected')
+            if(rating.id === num){
+                rating.classList.add('selected')
+            }
+        })
+    }
+    function handleClick() {
+        if (numRating !== '0') {
+            window.location.href = `/thanks/${numRating}`
+        }
+    }
+</script>

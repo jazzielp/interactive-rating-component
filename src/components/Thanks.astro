@@ -1,0 +1,25 @@
+---
+interface Props {
+    params: {
+        num: string
+    }
+}
+import Article from './Article.astro'
+import IconThanks from '../Icons/IconThanks.astro'
+const { num } = Astro.params
+---
+
+<Article>
+    <header class="grid place-items-center">
+        <picture class="">
+            <IconThanks class="w-[144] h-[96px] lg:w-[168px] lg:h-[108px]"/>
+        </picture>
+    </header>
+    <div class="grid place-items-center mt-7">
+        <span class="p-1 px-4 rounded-3xl bg-custom-dark-blue text-custom-orange text-sm lg:text-[15px] leading-6">{`you selected ${num} out of 5`}</span>
+    </div>
+    <div class="text-center mt-6 lg:mt-8">
+        <h2 class="text-2xl lg:text-[28px] font-bold text-custom-white">Thank you!</h2>
+        <p class="text-sm lg:text-[15px] mt-[14px] lg:mt-[15px] text-custom-light-grey leading-6">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in touch!</p>
+    </div>
+</Article>

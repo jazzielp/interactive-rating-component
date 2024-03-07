@@ -1,0 +1,17 @@
+---
+export function getStaticPaths() {
+  return [
+    {params: {num: '1'}},
+    {params: {num: '2'}},
+    {params: {num: '3'}},
+    {params: {num: '4'}},
+    {params: {num: '5'}},
+  ];
+}
+import Layout from '../../layouts/Layout.astro';
+import Thanks from '../../components/Thanks.astro'
+---
+
+<Layout title="Rating">
+  <Thanks />
+</Layout>
